@@ -5,26 +5,18 @@ provider "azurerm" {
 }
 
 module "resource_group" {
-  source = "./modules/resource_group"
-}
-
-# module "network" {
-#   source              = "./modules/network"
-# }
-
-
-provider "azurerm" {
-  features = {}
+  source              = "./modules/resource_group"
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  tags                = var.tags
 }
 
 module "virtual_network" {
-  source = "./modules/virtual_network"
-
-  resource_group_name    = var.resource_group
-  location               = var.location
-  private_subnet_prefix  = var.private_subnet_prefix
-  public_subnet_prefix   = var.public_subnet_prefix
-  private_ip_count       = var.private_ip_count
-  public_ip_count        = var.public_ip_count
-  tags                   = var.tags
+  source                = "./modules/virtual_network"
+  resource_group_name   = var.resource_group_name
+  location              = var.location
+  vnet_name             = var.vnet_name
+  vnet_address_space    = var.vnet_address_space
+  num_public_subnets    = var.num_public_subnets
+  num_private_subnets   = var.num_private_subnets
 }

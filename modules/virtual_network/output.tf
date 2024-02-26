@@ -1,19 +1,29 @@
-output "private_subnet_id" {
-  description = "ID of the private subnet"
-  value       = azurerm_virtual_network.example.subnet[0].id
+output "virtual_network_name" {
+  value       = azurerm_virtual_network.vnet.name
+  description = "The name of the virtual network."
 }
 
-output "public_subnet_id" {
-  description = "ID of the public subnet"
-  value       = azurerm_virtual_network.example.subnet[1].id
+output "virtual_network_id" {
+  value       = azurerm_virtual_network.vnet.id
+  description = "The ID of the virtual network."
 }
 
-output "private_nic_ids" {
-  description = "List of IDs for the private network interfaces"
-  value       = azurerm_network_interface.private_nics[*].id
+output "public_subnet_ids" {
+  value       = [for subnet in azurerm_subnet.public : subnet.id]
+  description = "The list of IDs for the public subnets."
 }
 
-output "public_ip_ids" {
-  description = "List of IDs for the public IPs"
-  value       = azurerm_public_ip.public_ips[*].id
+output "private_subnet_ids" {
+  value       = [for subnet in azurerm_subnet.private : subnet.id]
+  description = "The list of IDs for the private subnets."
+}
+
+output "public_subnet_names" {
+  value       = [for subnet in azurerm_subnet.public : subnet.name]
+  description = "The list of names for the public subnets."
+}
+
+output "private_subnet_names" {
+  value       = [for subnet in azurerm_subnet.private : subnet.name]
+  description = "The list of names for the private subnets."
 }

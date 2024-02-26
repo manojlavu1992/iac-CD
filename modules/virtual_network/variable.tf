@@ -1,29 +1,29 @@
 variable "resource_group_name" {
-  description = "Name of Azure Resource Group."
+  description = "The name of the resource group where the virtual network will be deployed."
   type        = string
 }
 
 variable "location" {
-  description = "The region where the resources are located"
+  description = "The Azure region where the virtual network will be deployed."
   type        = string
 }
 
-variable "private_subnet_prefix" {
-  description = "CIDR block for the private subnet"
+variable "vnet_name" {
+  description = "The name of the virtual network to be created."
   type        = string
 }
 
-variable "public_subnet_prefix" {
-  description = "CIDR block for the public subnet"
+variable "vnet_address_space" {
+  description = "The address space for the virtual network, in CIDR notation."
   type        = string
 }
 
-variable "private_ip_count" {
-  description = "Number of private IPs"
+variable "num_public_subnets" {
+  description = "The number of public subnets to create within the virtual network."
   type        = number
 }
 
-variable "public_ip_count" {
-  description = "Number of public IPs"
+variable "num_private_subnets" {
+  description = "The number of private subnets to create within the virtual network."
   type        = number
 }

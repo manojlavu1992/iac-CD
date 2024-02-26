@@ -1,45 +1,38 @@
-# Contains variable declarations.
+# # Contains variable declarations.
 
-variable "resource_group" {
-  description = "Name of Azure Resource Group."
-  type        = string
+variable "resource_group_name" {
+  description = "name of Azure Resource Group."
   default     = "IaC-ClearD-Internal-Resource-Group"
 }
 
 variable "location" {
   description = "The region where the resources are located"
-  type        = string
   default     = "Canada Central"
 }
 
 variable "tags" {
   description = "Tags to be associated with the Azure Resource Group"
-  type        = map(string)
   default     = {
     environment = "Dev-&-QA"
   }
 }
 
-variable "private_subnet_prefix" {
-  description = "CIDR block for the private subnet"
-  type        = string
-  default     = "172.17.1.0/24"
+variable "vnet_name" {
+  description = "The name of the virtual network"
+  default     = "IaC-ClearD-Internal-Virtual-Network"
 }
 
-variable "public_subnet_prefix" {
-  description = "CIDR block for the public subnet"
-  type        = string
-  default     = "172.17.2.0/24"
+variable "vnet_address_space" {
+  description = "The address space for the virtual network"
+  default     = "172.17.0.0/16"
 }
 
-variable "private_ip_count" {
-  description = "Number of private IPs"
-  type        = number
-  default     = 10
-}
-
-variable "public_ip_count" {
-  description = "Number of public IPs"
-  type        = number
+variable "num_public_subnets" {
+  description = "Number of public subnets"
   default     = 3
+}
+
+variable "num_private_subnets" {
+  description = "Number of private subnets"
+  default     = 10
 }
