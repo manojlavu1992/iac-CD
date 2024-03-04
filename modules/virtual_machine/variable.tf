@@ -36,3 +36,16 @@ variable "public_subnets" {
     address_prefix = string
   }))
 }
+
+
+#Need to delete this VM this VM is just for testing
+variable "nic" {
+  description = "This is to create NIC for a VM"
+  type = string
+  default = "IaC-VM-NIC"
+}
+
+variable "subnet_id" {
+  description = "ID of the subnet where the VM will be created"
+  type        = string
+}

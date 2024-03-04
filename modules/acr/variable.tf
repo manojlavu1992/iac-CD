@@ -36,3 +36,20 @@ variable "public_subnets" {
     address_prefix = string
   }))
 }
+
+variable "acr_name" {
+  type    = string
+  description = "The name of the Azure Container Registry"
+}
+
+
+variable "subnet_id" {
+  type        = string
+  description = "The ID of the subnet where the Azure Container Registry private endpoint will be created."
+}
+
+variable "virtual_network_id" {
+  type        = string
+  description = "The ID of the virtual network."
+}
+
